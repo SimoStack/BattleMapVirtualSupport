@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Mapper</title>
+        <!--
+        TODOS
+            - mascherare input file con bottone più bello
+        -->
+
+        <!-- Medieval font import -->
+        <link href='https://fonts.googleapis.com/css?family=MedievalSharp' rel='stylesheet'>
+        <!-- Custom style -->
+        <link href='./style.css' rel='stylesheet'>
+    </head>
+    <body class="m0">
+        <div id="help" title="How to use the page" class="help" onclick="help()">
+            <svg height="24" class="help-icon" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm1 16h-2v-2h2v2zm.976-4.885c-.196.158-.385.309-.535.459-.408.407-.44.777-.441.793v.133h-2v-.167c0-.118.029-1.177 1.026-2.174.195-.195.437-.393.691-.599.734-.595 1.216-1.029 1.216-1.627a1.934 1.934 0 0 0-3.867.001h-2C8.066 7.765 9.831 6 12 6s3.934 1.765 3.934 3.934c0 1.597-1.179 2.55-1.958 3.181z"/></svg>
+        </div>
+        <div id="clear-minies" title="Clear all minis on map" class="clear-minies" onclick="clearMiniesOnMap()">
+            <svg class="clear-minies-icon" height="24" viewBox="-1.5 -2.5 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M12.728 12.728 8.485 8.485l-5.657 5.657 2.122 2.121a3 3 0 0 0 4.242 0l3.536-3.535zM11.284 17H14a1 1 0 0 1 0 2H3a1 1 0 0 1-.133-1.991l-1.453-1.453a2 2 0 0 1 0-2.828L12.728 1.414a2 2 0 0 1 2.828 0L19.8 5.657a2 2 0 0 1 0 2.828L11.284 17z"/></svg>
+        </div>
+        <div id="visibility-toggle" title="Hide bars leaving the map in full page" class="visibility-toggle" onclick="switchBarVisibility()">
+            <svg class="toggle-icon"  height="24px" viewBox="0 0 24 24" width="24px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M21.821,12.43c-0.083-0.119-2.062-2.944-4.793-4.875C15.612,6.552,13.826,6,12,6c-1.825,0-3.611,0.552-5.03,1.555  c-2.731,1.931-4.708,4.756-4.791,4.875c-0.238,0.343-0.238,0.798,0,1.141c0.083,0.119,2.06,2.944,4.791,4.875  C8.389,19.448,10.175,20,12,20c1.826,0,3.612-0.552,5.028-1.555c2.731-1.931,4.71-4.756,4.793-4.875  C22.06,13.228,22.06,12.772,21.821,12.43z M12,16.5c-1.934,0-3.5-1.57-3.5-3.5c0-1.934,1.566-3.5,3.5-3.5c1.93,0,3.5,1.566,3.5,3.5  C15.5,14.93,13.93,16.5,12,16.5z"/><g><path d="M14,13c0,1.102-0.898,2-2,2c-1.105,0-2-0.898-2-2c0-1.105,0.895-2,2-2C13.102,11,14,11.895,14,13z"/></g></svg>
+        </div>
+        <!-- HEADER -->
+        <div id="header" class="header">
+            <label for="map-input"><span class="map-title">Map:</span></label>
+            <input id="map-input" class="map-input" type="file" accept="image/jpeg, image/png, image/jpg">
+
+            <label for="scale-input"><span >scale mini(%):</span></label>
+            <input id="scale-input" class="scale-input" type="number" value="100">
+
+            <label for="rotate-input"><span >rotate mini(°):</span></label>
+            <input id="rotate-input" class="rotate-input" type="number" value="0">
+        </div>
+        <div>
+            <!-- MAIN -->
+            <div id="main" class="main">
+            </div>
+            <!-- MENU -->
+            <div id="menu" class="menu">
+                <div class="menu-container">
+                    <!-- PC -->
+                    <div class="pc-container">
+                        <div class="pc-head">
+                            <label for="pc-input">PC:</label>
+                            <input id="pc-input" name=pc-input" class="pc-input" type="file" accept="image/jpeg, image/png, image/jpg" multiple="multiple">
+                            <input type="button" onclick="clearLoadedAssets('pc')" value="Clear all">
+                        </div>
+                        <div id="pc-list"></div>
+                    </div>
+                    <!-- Utility -->
+                    <div class="utility-container">
+                        <div class="utility-head">
+                            <label for="utility-input">UTILITY:</label>
+                            <input id="utility-input" name=utility-input" class="utility-input" type="file" accept="image/jpeg, image/png, image/jpg" multiple="multiple">
+                            <input type="button" onclick="clearLoadedAssets('utility')" value="Clear all">
+                        </div>
+                        <div id="utility-list"></div>
+                    </div>
+                    <!-- AOE -->
+                    <div class="aoe-container">
+                        <div class="aoe-head" style="display: flex; justify-content: space-between">
+                            <div>AOE:</div>
+                            <div><input type="button" value="show/hide scale" onclick="switchScaleVisibility()"></div>
+                        </div>
+                        <div class="aoe-input-container">
+                            <label for="aoe-radius">radius (%)</label>
+                            <input id="aoe-radius" class="aoe-input" type="number" max="100" min="1">
+                            <label for="aoe-color">color</label>
+                            <select id="aoe-color">
+                                <option value="green">Green</option>
+                                <option value="yellow">Yellow</option>
+                                <option value="blue">Blue</option>
+                                <option value="red">Red</option>
+                            </select>
+                        </div>
+                        <div class="aoe-input-container">
+                            <label for="aoe-name">AOE name</label>
+                            <input id="aoe-name" class="aoe-input" type="text">
+                            <input id="aoe-create" class="aoe-input" type="button" onclick="createAOE()" value="create">
+                        </div>
+                        <div id="aoe-list"></div>
+                    </div>
+                    <!-- Room -->
+                    <div class="room-container">
+                        <div class="room-head" style="display: flex; justify-content: space-between">
+                            <div>Room:</div>
+                        </div>
+                        <div class="room-input-container">
+                            <label for="room-width">W(%)</label>
+                            <input id="room-width" class="room-input" type="number" max="100" min="1">
+                            <label for="room-height">H(%)</label>
+                            <input id="room-height" class="room-input" type="number" max="100" min="1">
+                            <input id="room-create" class="room-input" type="button" onclick="createRoom()" value="create">
+                        </div>
+                        <div id="room-list"></div>
+                    </div>
+                </div>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+        <!-- FOOTER -->
+        <div id="footer" class="footer">
+            <div class="avatars-input-container">
+                <label for="avatars-input"><span class="avatars-title">Minis:</span></label>
+                <input id="avatars-input" name=avatars-input" class="avatars-input" type="file" accept="image/jpeg, image/png, image/jpg" multiple="multiple">
+                <input type="button" onclick="clearLoadedAssets('avatar')" value="Clear all">
+            </div>
+            <div id="avatars-container" class="avatars-container"></div>
+        </div>
+    </body>
+
+    <!-- Scripts -->
+    <script type="application/javascript" src="app.js"></script>
+
+</html>

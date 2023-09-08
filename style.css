@@ -1,0 +1,391 @@
+/* GENERAL STYLE & UTILITIES */
+body {
+    background-color: black;
+    color: white;
+    font-family: "MedievalSharp", serif;
+}
+
+.m0 {
+    margin: 0;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.hide {
+    visibility: hidden;
+    display: none;
+}
+
+.collapse-bottom {
+    position: fixed !important;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 6vh;
+}
+
+.collapse-right {
+    margin-top: 3%;
+    max-width: 6vw;
+    height: 92% !important;
+}
+
+.fullscreen {
+    width: 94vw !important;
+    height: 94vh !important;
+}
+
+/* HEADER: MAP & APP OPTIONS  */
+.header {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 80%, rgba(0, 0, 0, 1) 100%),
+    url('./assets/bkg/header-bkg.jpg');
+    height: 5vh;
+    position: relative;
+    z-index: 2;
+}
+
+.map-title {
+    font-size: 2.5em;
+}
+
+/* Help, toggle end clear minies section is floating, so is not really attached to header, but it stay in the zone of the header so its style has been put here */
+.help {
+    position: fixed;
+    top: 0;
+    right: 100px;
+    z-index: 100;
+}
+
+.help-icon {
+    filter: invert(100%) sepia(1%) saturate(2%) hue-rotate(26deg) brightness(103%) contrast(100%);
+    width: 150px;
+    height: 40px;
+}
+
+.clear-minies {
+    position: fixed;
+    top: 0;
+    right: 75px;
+    z-index: 100;
+}
+
+.clear-minies-icon {
+    filter: invert(100%) sepia(1%) saturate(2%) hue-rotate(26deg) brightness(103%) contrast(100%);
+    width: 50px;
+    height: 40px;
+}
+
+.visibility-toggle {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.toggle-icon {
+    filter: invert(100%) sepia(1%) saturate(2%) hue-rotate(26deg) brightness(103%) contrast(100%);
+    width: 50px;
+    height: 40px;
+}
+
+/* MAIN SECTION: MAP & MINIES */
+.main {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    float: left;
+    height: 80vh;
+    width: 80%;
+}
+
+.main-grid-table {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.main-grid-row {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.main-grid-cell {
+    z-index: 2;
+    position: relative;
+    flex: 1;
+    min-width: 4px;
+    min-height: 2px;
+}
+
+.mini-on-map {
+    position: absolute;
+    display: inline;
+    z-index: 1;
+    max-width: 4.5vw;
+    max-height: 8vh;
+    top: 0;
+    left: 0;
+}
+
+.mini-on-map-fullscreen {
+    max-width: 5.5vw ;
+    max-height: 9.75vh ;
+}
+
+/* MENU: PC & UTILITIES SELECTION */
+.menu {
+    position: relative;
+    /*background-color: #000;*/
+    float: right;
+    height: 80vh;
+    width: 20%;
+    background-image: url('./assets/bkg/menu-bkg.png');
+    background-size: 130% 100%;
+    z-index: 2;
+}
+
+.collapse-right.menu { /* .menu element get the collapse-right class so no space between the classes because .menu isn't a child element of the one with .collapse-right class but is the same element*/
+    background-image: none;
+}
+
+.menu-container {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 5% 5% 5% 10%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.pc-container {
+    flex: 3;
+}
+
+.collapse-right .pc-head {
+    visibility: hidden;
+}
+
+.pc-name {
+    cursor: pointer;
+    color: white;
+    padding: 1vh 2vw;
+    background-image: url("./assets/bkg/pc-bkg.png");
+    background-size: 100% 100%;
+}
+
+.collapse-right .pc-name {
+    padding: .5vh 1vw;
+}
+
+.selected-pc {
+    background-image: url("./assets/bkg/pc-bkg-select.png") !important;
+}
+
+.utility-container {
+    flex: 4;
+}
+
+.collapse-right .utility-container {
+    visibility: hidden;
+}
+
+.utility-image-container {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    padding: .25vh 0;
+}
+.utility-image {
+    flex: 2;
+    max-width: 2vw;
+    max-height: 2.25vh;
+}
+
+.utility-name {
+    min-height: 2.25vh;
+    flex: 9;
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+}
+.utility-clear {
+    flex:1;
+}
+
+.selected-utility {
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5) 80%, rgba(255, 255, 255, 1) 100%);
+}
+
+.aoe-container {
+    flex: 1.5;
+}
+
+.collapse-right .aoe-container {
+    visibility: hidden;
+}
+
+.aoe-input-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 12px;
+}
+
+.aoe-input {
+    width: 4vw;
+    /*width: 50px;*/
+    height: 15px;
+    font-size: 10px;
+    padding: 0;
+}
+
+.aoe-image-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: .25vh 0;
+}
+.aoe-image {
+    width: 15px;
+    height: 15px;
+}
+
+.aoe-name {
+    min-height: 2.25vh;
+    flex: 9;
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+}
+.aoe-clear {
+    cursor: pointer;
+    flex:1;
+}
+
+.room-container {
+    flex: 1.5;
+}
+
+.collapse-right .room-container {
+    visibility: hidden;
+}
+
+.room-input-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 12px;
+}
+
+.room-input {
+    width: 4vw;
+    /*width: 50px;*/
+    height: 15px;
+    font-size: 10px;
+    padding: 0;
+}
+
+.room-image-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: .25vh 0;
+}
+
+.room-name {
+    min-height: 2.25vh;
+    flex: 9;
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+}
+.room-clear {
+    cursor: pointer;
+    flex:1;
+}
+
+/* FOOTER: AVATARS SELECTION */
+.footer {
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 80%, rgba(0, 0, 0, 1) 100%),
+    linear-gradient(to top, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73)),
+    url('./assets/bkg/avatars-bkg.jpg');
+    height: 15vh;
+    position: relative;
+    z-index: 2;
+}
+
+.avatars-title {
+    font-size: 2em;
+}
+
+.avatars-input-container {
+    height: 15%;
+}
+
+.collapse-bottom .avatars-input-container {
+    visibility: hidden;
+}
+
+.avatars-container {
+    display: flex;
+    height: 85%;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.avatar-image-container {
+    cursor: pointer;
+    flex: 1;
+    position: relative;
+    min-width: 50px;
+    max-width: 10%;
+    height: 100%;
+}
+
+.avatar-image {
+    position: absolute;
+    display: block;
+    left: 50%;
+    transform: translate(-50%, 0);
+    top: 0;
+    max-height: 80%;
+    max-width: 100%;
+}
+
+.collapse-bottom .avatar-image {
+    visibility: hidden;
+}
+
+.avatar-name {
+    color: #3a639a;
+    background-image: url("./assets/bkg/avatar-name-bkg.png");
+    background-size: 100% 100%;
+    position: absolute;
+    display: block;
+    text-align: center;
+    bottom: 1vh;
+    padding: 5% 0;
+    min-height: 20%;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.selected-avatar-image {
+    background: radial-gradient(#fff 20%, #0000 60%);
+}
+
+
+.selected-avatar-name {
+    color: gold !important;
+}
