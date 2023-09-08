@@ -87,6 +87,4 @@ It's possible to access some features with keyboard shortcuts:
 
 ## Known limits
 - Rooms and AOE features doesn't scale properly when full page mode is activated, so if you plan to add one define its dimensions a little bigger to fit well on full page visualization (use the "show/hide scale" button to determine the size of your areas you must use)
-- That's a pure JS/HTML/CSS software, auto-loading assets are now allowed to prevent security issues. 
-# BattleMapVirtualSupport
-# BattleMapVirtualSupport
+- That's a pure JS/HTML/CSS software, auto-loading assets are now allowed to prevent security issues.
