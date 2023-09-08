@@ -1,7 +1,7 @@
 # Battle Map virtual support
 ## Premise
 This software has been developed for my own personal use, since it was working fine and it was usable for mine (non developers) friends, i've chosen to publish this code free to anyone how is willing to use it.  
-I've no programs about maintaining/changing/improving anything about this repo, but fell yourself free to make any request, if i have spare time and request are doable i will gladly add new features.  
+I've no programs about maintaining/changing/improving anything about this repo, but fell yourself free to make any request, if i have spare time and requests are doable i will gladly add new features.  
 If anyone is willing to extend or change massively the source code fell free take the entire code base in this repo and make it his own. 
 
 ## Introduction
